@@ -13,7 +13,7 @@ public class CompanyResource {
     
     @GetMapping(produces = {"application/json"})
     public Iterable<Company> list() {
-        return null;
+        return companyRepository.findAll();
     }
     
     @PostMapping(produces = {"application/json"})
