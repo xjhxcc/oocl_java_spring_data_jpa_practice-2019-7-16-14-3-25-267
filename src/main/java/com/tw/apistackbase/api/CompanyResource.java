@@ -1,11 +1,15 @@
 package com.tw.apistackbase.api;
 
 import com.tw.apistackbase.core.Company;
+import com.tw.apistackbase.core.CompanyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/companies")
 public class CompanyResource {
+    @Autowired
+    private CompanyRepository companyRepository;
     
     @GetMapping(produces = {"application/json"})
     public Iterable<Company> list() {
@@ -14,6 +18,6 @@ public class CompanyResource {
     
     @PostMapping(produces = {"application/json"})
     public Company add(@RequestBody Company company) {
-        return null;
+        return companyRepository.save(company);
     }
 }
